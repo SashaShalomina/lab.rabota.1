@@ -1,0 +1,60 @@
+import java.io.PrintStream;
+import java.util.Scanner;
+public class Main {
+    public static Scanner in = new Scanner(System.in);
+    public static PrintStream out = System.out;
+    public static void main(String[] args) {
+        int a = in.nextInt();
+        int b = in.nextInt();
+        int c = in.nextInt();
+        int d = in.nextInt();
+        // ввод данных
+        if ((a<0 && b<0 && c<0 && d<0) || (a==b && b==c && c==d) || (a>0 && b>0 && c>0 && d>0)) {
+            out.println("данные не корректны"); } // проверка на корректность
+        // начинаем сортировать, присваиваем a наибольшее значение из введенных переменных
+        else {if (a < b) {
+            int x = a;
+            a = b;
+            b = x;
+        } else { a = a; }
+        if (a < c) {
+            int x = a;
+            a = c;
+            c = x;
+        } else { a = a; }
+        if (a < d) {
+            int x = a;
+            a = d;
+            d = x;
+        } else { a = a; }
+        ////out.println(a);////
+            // продолжаем сортировать, присваиваем d наименьшее значение из введенных переменных
+        if (d > b) {
+            int y = d;
+            d = b;
+            b=y;
+        } else { d=d; }
+        if (d > c) {
+            int y = d;
+            d = c;
+            c=y;
+        } else { d=d; }
+        ////out.println(d);////
+            // продолжаем сортировать, присваиваем b второе по величине значение, а для c - третье
+        if (c > b) {
+            int z = c;
+            c = b;
+            b = z;
+        } else { b = b;}}
+        if (a==0 || b==0 || c==0 || d==0){
+            out.print("разность равна 0");
+        } // проверяем, равно ли одно из значений нулю, потому что если да то она будет одновременно и наибольшим и наименьшим значением
+        else {
+            if (c > 0) {
+                out.printf("разность равна %d", (d - c)); // если с - первое неотрицательное, то надо из него вычесть d
+            } else {
+                if (b > 0) {
+                    out.printf("разность равна %d", (c - b)); // если b - первое неотрицательное, то надо из него вычесть c
+                } else { out.printf("разность равна %d", (b - a));} } } // если программа попадает сюда, значит а - первое неотрицательное, значит из него и надо вычесть
+    }
+}
